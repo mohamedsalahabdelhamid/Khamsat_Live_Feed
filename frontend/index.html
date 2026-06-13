@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khamsat Deep Scanner PRO - لوحة المراقبة الذكية</title>
+    <meta name="description" content="أداة مراقبة ذكية لطلبات خمسات مع تحليل AI فوري وعروض احترافية تلقائية">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233b82f6'/><text y='.9em' font-size='80' font-family='Arial' font-weight='bold' fill='white' x='10'>K</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <nav class="sidebar" role="navigation" aria-label="القائمة الجانبية">
+            <div class="logo">
+                <div class="logo-icon" aria-hidden="true">K</div>
+                <span>Khamsat PRO</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="#" aria-current="page">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        الرئيسية
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="id-config-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        الهوية والأمان
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="icon-btn" title="تبديل المظهر" aria-label="تبديل بين الوضع الفاتح والداكن">
+                    <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <span class="sr-only">تبديل المظهر</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content" role="main">
+            <header class="top-bar">
+                <div class="search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <label for="search-input" class="sr-only">البحث في الطلبات</label>
+                    <input type="search" id="search-input" placeholder="ابحث في الطلبات (مثلاً: برمجة، تصميم)..." autocomplete="off">
+                </div>
+                <div class="actions">
+                    <button id="refresh-btn" class="primary-btn" title="تشغيل السكرابر الآن">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                        <span>تحديث لحظي</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats Row -->
+            <div class="stats-row" role="region" aria-label="إحصائيات">
+                <div class="stat-card">
+                    <div class="stat-label">آخر تحديث</div>
+                    <div class="stat-value" id="last-updated" aria-live="polite">--:--</div>
+                </div>
+                <div class="stat-card id-card" id="current-id-panel">
+                    <div class="stat-label">الهوية الحالية (Anti-Ban)</div>
+                    <div class="stat-value" style="font-size: 14px; opacity: 0.8;" id="active-ua">iPhone Safari</div>
+                    <button id="change-ua-btn" class="text-link">🔄 تغيير الهوية الآن</button>
+                </div>
+                <div class="stat-card ai-stat">
+                    <div class="stat-label">حالة الذكاء الاصطناعي</div>
+                    <div class="stat-value" id="ai-status-value" aria-live="polite">جاري الفحص...</div>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <label for="sort-filter" class="sr-only">ترتيب الطلبات</label>
+                <select id="sort-filter">
+                    <option value="newest">الأحدث أولاً</option>
+                    <option value="match">الأكثر توافقاً (AI)</option>
+                    <option value="least-comments">الأقل تعليقاً</option>
+                </select>
+            </div>
+
+            <!-- Requests Grid -->
+            <div id="requests-grid" class="requests-grid" role="list" aria-live="polite" aria-label="قائمة الطلبات">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>جاري تحميل البيانات...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Proposal Modal -->
+    <div id="ai-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">العرض المقترح من الذكاء الاصطناعي</h3>
+                <button id="modal-close-btn" class="close" aria-label="إغلاق النافذة">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label for="ai-proposal-text" class="sr-only">نص العرض المقترح</label>
+                <textarea id="ai-proposal-text" readonly></textarea>
+                <div class="modal-actions">
+                    <button id="copy-proposal" class="primary-btn">نسخ العرض</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
