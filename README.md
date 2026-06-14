@@ -2,219 +2,113 @@
 
 # 🚀 Khamsat Deep Scanner PRO
 
-### أداة مراقبة ذكية لطلبات منصة خمسات مع تحليل AI فوري
+### Smart Monitoring Tool for Khamsat Platform with Instant AI Analysis
 
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-**[العربية](#-كيف-يعمل) | [Features](#-features)**
+**[English](#-features) | [العربية](README_AR.md)**
 
 </div>
 
 ---
 
-## 📸 لقطة شاشة
+## 📸 Screenshot
 
-> لوحة تحكم عصرية بالوضع الداكن مع تحديث فوري وتحليل AI
+> Modern dark mode dashboard featuring real-time updates and instant AI analysis
 
 ---
 
-## ✨ المميزات
+## ✨ Features
 
-| الميزة | التفاصيل |
+| Feature | Details |
 |--------|----------|
-| 🔍 **مسح عميق** | يتصفح جميع الطلبات الحديثة في خمسات تلقائياً |
-| 🤖 **AI Analysis** | يحلل كل طلب ويعطيه نسبة توافق مع مهاراتك |
-| ✍️ **كتابة عروض** | يكتب عرضاً احترافياً لكل طلب تلقائياً |
-| ⚡ **Real-time** | تحديث فوري عبر WebSocket بدون تحديث الصفحة |
-| 🛡️ **Anti-Ban** | تدوير User-Agent تلقائي للحماية من الحجب |
-| 🌙 **Dark/Light Mode** | وضع داكن وفاتح |
-| 📱 **Responsive** | يعمل على الجوال والكمبيوتر |
+| 🔍 **Deep Scanning** | Automatically browses and tracks all recent requests on Khamsat |
+| 🤖 **AI Analysis** | Analyzes each request and calculates its compatibility score with your skills |
+| ✍️ **Proposal Generation** | Automatically writes highly professional proposals customized for each request |
+| ⚡ **Real-time Updates** | Instant data streaming via WebSocket without needing to refresh the page |
+| 🛡️ **Anti-Ban System** | Implements automatic User-Agent rotation to prevent IP blocking |
+| 🌙 **Dark/Light Mode** | Seamless transition between beautiful dark and light themes |
+| 📱 **Fully Responsive** | Optimized to work flawlessly on both desktop and mobile devices |
 
 ---
 
-## 🛠️ المتطلبات
+## 🛠️ Requirements
 
-قبل التشغيل، تأكد من تثبيت:
+Before running the project, ensure you have the following installed:
 
-1. **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** - مجاني، يعمل على Windows/Mac/Linux
-2. **[Ollama](https://ollama.com/)** - لتشغيل الذكاء الاصطناعي محلياً (مجاني)
+1. **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** - Free, works across Windows, Mac, and Linux
+2. **[Ollama](https://ollama.com/)** - To run the AI models locally for free
 
 ---
 
-## 🚀 تشغيل المشروع (خطوتين فقط!)
+## 🚀 Getting Started (Only 2 Steps!)
 
-### الخطوة 1: تجهيز الذكاء الاصطناعي
+### Step 1: Set Up the AI Model
 
-بعد تثبيت Ollama، افتح Terminal وشغّل:
+After installing Ollama, open your terminal and run:
 
 ```bash
 ollama pull llama3
-```
-
-> ⏳ سيقوم بتحميل نموذج Llama3 (حوالي 4GB) - مرة واحدة فقط
-
----
-
-### الخطوة 2: تشغيل المشروع
-
-```bash
-# 1. استنسخ المشروع
-git clone https://github.com/YOUR_USERNAME/khamsat-deep-scanner.git
+# 1. Clone the repository
+git clone [https://github.com/YOUR_USERNAME/khamsat-deep-scanner.git](https://github.com/YOUR_USERNAME/khamsat-deep-scanner.git)
 cd khamsat-deep-scanner
 
-# 2. انسخ ملف الإعدادات
-cp .env.example .env        # على Linux/Mac
-copy .env.example .env      # على Windows
+# 2. Copy the environment configuration file
+cp .env.example .env         # For Linux/Mac
+copy .env.example .env       # For Windows
 
-# 3. اكتب مهاراتك في هذا الملف (مهم جداً!)
+# 3. Write your professional skills into this file (Crucial step!)
 notepad data\my_profile.txt    # Windows
 nano data/my_profile.txt       # Linux/Mac
 
-# 4. شغّل المشروع
+# 4. Launch the project using Docker
 docker compose up -d
 
-# 5. افتح المتصفح
-# http://localhost:8080
-```
+# 5. Open your browser
+# Go to http://localhost:8080
+# Target URL for community requests (Do not change)
+KHAMSAT_URL="[https://khamsat.com/community/requests](https://khamsat.com/community/requests)"
 
-**✅ هو ده! المشروع شغال على http://localhost:8080**
-
----
-
-## ⚙️ الإعدادات
-
-افتح ملف `.env` لتعديل الإعدادات:
-
-```env
-# رابط صفحة الطلبات (لا تغيّره)
-KHAMSAT_URL="https://khamsat.com/community/requests"
-
-# كل كم ثانية يتحدث السكرابر (120 = دقيقتان)
+# Scraper refresh interval in seconds (120 = 2 minutes)
 SCRAPE_INTERVAL=120
 
-# منفذ الخادم
+# Server port configuration
 PORT=8080
-```
-
----
-
-## 📝 تخصيص الملف الشخصي (مهم!)
-
-افتح `data/my_profile.txt` واملأه بمعلوماتك:
-
-```
-تخصصي: مبرمج بايثون وخبير تطوير ويب
-المهارات: Python, Django, React, PostgreSQL
-الخبرة: 4 سنوات في تطوير التطبيقات
-نماذج أعمالي: بنيت منصة تجارة إلكترونية بـ 5000 مستخدم
-الأسعار: أعمل بأسعار مناسبة تبدأ من 50 دولار
-أسلوب الرد: احترافية وودودة
-```
-
-> 🔑 كلما كان الملف أكثر تفصيلاً، كلما كانت العروض التي يكتبها AI أفضل!
-
----
-
-## 🏗️ هيكل المشروع
-
-```
+Role: Python Developer & Web Development Expert
+Skills: Python, Django, React, PostgreSQL
+Experience: 4 years of developing scalable web applications
+Portfolio: Built an e-commerce platform with over 5,000 active users
+Pricing: Offers competitive pricing starting from $50
+Communication Style: Professional, welcoming, and objective
 khamsat-deep-scanner/
-├── 📄 server.py              # FastAPI server + WebSocket
-├── 📄 ai_processor.py        # Ollama AI integration  
-├── 📄 run.py                 # Entry point
-├── 📄 Dockerfile             # Docker build config
-├── 📄 docker-compose.yml     # Docker services
-├── 📄 .env.example           # إعدادات نموذجية
+├── 📄 server.py              # FastAPI server + WebSocket management
+├── 📄 ai_processor.py        # Ollama AI model integration  
+├── 📄 run.py                 # Application entry point
+├── 📄 Dockerfile             # Docker container build config
+├── 📄 docker-compose.yml     # Docker services composition
+├── 📄 .env.example           # Template configuration file
 ├── scraper/
-│   ├── 📄 scraper.py         # Playwright scraper
-│   ├── 📄 parser.py          # HTML parser
-│   └── 📄 storage.py         # JSON data storage
+│   ├── 📄 scraper.py         # Playwright-based web scraper
+│   ├── 📄 parser.py          # HTML parser and extractor
+│   └── 📄 storage.py         # JSON data storage engine
 ├── frontend/
-│   ├── 📄 index.html         # واجهة المستخدم
-│   ├── 📄 app.js             # Frontend logic + WebSocket
-│   └── 📄 style.css          # التصميم
+│   ├── 📄 index.html         # User Interface layout
+│   ├── 📄 app.js             # Frontend client logic + WebSocket handler
+│   └── 📄 style.css          # UI styles and layout design
 └── data/
-    └── 📄 my_profile.txt     # ملفك الشخصي للـ AI
-```
-
----
-
-## 🔧 أوامر Docker المفيدة
-
-```bash
-# عرض اللوغ مباشرة
+    └── 📄 my_profile.txt     # User profile data for AI context
+# View real-time container logs
 docker logs khamsat_pro_v2 -f
 
-# إيقاف المشروع
+# Stop the project services
 docker compose down
 
-# إعادة تشغيل بعد تعديل الإعدادات
+# Restart services after editing configurations
 docker compose restart
 
-# تحديث المشروع
+# Pull latest updates and rebuild the project
 git pull
 docker compose up -d --build
-```
-
----
-
-## ❓ مشاكل شائعة وحلولها
-
-<details>
-<summary><b>الذكاء الاصطناعي لا يعمل أو يظهر "غير متصل"</b></summary>
-
-تأكد من:
-1. تثبيت [Ollama](https://ollama.com/) على جهازك
-2. تشغيل `ollama pull llama3` في Terminal
-3. أن Ollama يعمل: افتح http://localhost:11434 في المتصفح
-
-</details>
-
-<details>
-<summary><b>لا تظهر أي طلبات في اللوحة</b></summary>
-
-1. انتظر دقيقتين بعد التشغيل - السكرابر يعمل تلقائياً
-2. اضغط زر "تحديث لحظي" في اللوحة
-3. تحقق من اللوغ: `docker logs khamsat_pro_v2 -f`
-
-</details>
-
-<details>
-<summary><b>المشروع لا يعمل على Windows</b></summary>
-
-1. تأكد أن Docker Desktop يعمل (الأيقونة في شريط المهام)
-2. شغّل Command Prompt كـ Administrator
-3. تأكد من تفعيل WSL2 في Docker Desktop
-
-</details>
-
----
-
-## 🤝 المساهمة
-
-المشروع مفتوح المصدر ونرحب بأي مساهمات!
-
-1. Fork المشروع
-2. أنشئ branch جديد: `git checkout -b feature/amazing-feature`
-3. Commit التغييرات: `git commit -m 'Add amazing feature'`
-4. Push: `git push origin feature/amazing-feature`
-5. افتح Pull Request
-
----
-
-## 📜 الترخيص
-
-هذا المشروع مرخص تحت رخصة MIT - راجع ملف [LICENSE](LICENSE) للتفاصيل.
-
----
-
-<div align="center">
-
-**صُنع بـ ❤️ للمستقلين العرب على منصة خمسات**
-
-⭐ **إذا أعجبك المشروع، لا تنسى الـ Star!**
-
-</div>
